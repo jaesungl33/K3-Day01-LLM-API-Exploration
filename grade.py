@@ -17,6 +17,7 @@ nếu không sẽ chấm template.py và exercises.md ở thư mục gốc.
 
 import sys
 from pathlib import Path
+from typing import Optional, Tuple
 
 import pytest
 
@@ -67,7 +68,7 @@ def run_test_group(pytest_args: list[str]) -> tuple[int, int]:
     return collector.passed, collector.total
 
 
-def grade_exercises() -> tuple[int, Path | None]:
+def grade_exercises() -> Tuple[int, Optional[Path]]:
     """Trả về (số câu đã trả lời, đường dẫn file được chấm)."""
     for candidate in (
         DAY_DIR / "solution" / "exercises.md",
